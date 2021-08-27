@@ -1,6 +1,9 @@
 package br.edu.ifpr.repositories;
 
 import java.util.ArrayList;
+
+import javax.swing.text.Style;
+
 import br.edu.ifpr.model.User;
 
 public class UserRepository {
@@ -40,13 +43,31 @@ public class UserRepository {
 
     return usersName.toArray(new String[usersName.size()]);
   }
-  
-  public void edit(String name, User user) {
 
+  public void getAll() {
+    for (User user: this.users) {
+      System.out.println(" " +  user.getNome() +
+      " " + user.getEmail() +
+      " " + user.getSenha() +
+      " " + user.getIdade() +
+      " " + user.getCurso());
+    } 
+  }
+  
+  public void edit(String nome, User newUser) {
+    for (User user: this.users) {
+      if (user.getNome() == nome) {
+        user.setNome(newUser.getNome());
+        user.setEmail(newUser.getEmail());
+        user.setSenha(newUser.getSenha());
+        user.setIdade(newUser.getIdade());
+        user.setCurso(newUser.getCurso());
+      }
+    }
   }
 
   public User findById(String id) {
-    for (User user: users) {
+    for (User user: this.users) {
       if (user.getId() == id) {
         return user;
       }
@@ -55,4 +76,13 @@ public class UserRepository {
     return null;
   }
 
+  public User findByName(String nome) {
+    for (User user: this.users) {
+      if (user.getNome() == nome) {
+        return user;
+      }
+    }
+
+    return null;
+  }
 }

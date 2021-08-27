@@ -2,6 +2,7 @@ package br.edu.ifpr.controllers;
 
 import javax.swing.JOptionPane;
 
+import br.edu.ifpr.model.User;
 import br.edu.ifpr.repositories.UserRepository;
 
 public class UserController {
@@ -28,7 +29,7 @@ public class UserController {
   public void edit() {
     String[] usersName = this.userRepository.getAllUsersName();
 
-    JOptionPane.showInputDialog(
+    String userName = JOptionPane.showInputDialog(
       null, 
       "Usuários Cadastrados",
       "Usuários Cadastrados", 
@@ -36,6 +37,36 @@ public class UserController {
       null,
       usersName,
       usersName[0]
+    ).toString();
+
+    User user = this.userRepository.findByName(userName);
+
+    String nome = JOptionPane.showInputDialog(
+      "O nome atual está " + user.getNome() + ". Qual é o novo?", 
+      user.getNome()
     );
+
+    String email = JOptionPane.showInputDialog(
+      "O E-mail atual é " + user.getEmail() + ". Qual vai ser o nove?",
+      user.getEmail()
+    );
+
+    String senha = JOptionPane.showInputDialog("Digite a nova senha.");
+
+    String idade = JOptionPane.showInputDialog(
+      "A idade atual está " + user.getIdade() + ". Qual vai ser a nova?",
+      user.getIdade()
+    );
+
+    String curso = JOptionPane.showInputDialog(
+      "O curso atual é " + user.getCurso() + ". Qual vai ser o novo?",
+      user.getCurso()
+    );
+
+    user.setNome(nome);
+    user.setEmail(email);
+    user.setSenha(senha);
+    user.setIdade(idade);
+    user.setCurso(curso);    
   }
 }

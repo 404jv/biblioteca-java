@@ -1,6 +1,6 @@
 ## ✅ To do list
 - [x] Cadastrar usuários
-- [ ] Alterar usuários
+- [x] Alterar usuários
 - [ ] Remover usuários
 - [ ] Exibir usuários
 
@@ -9,3 +9,6 @@
 - [ ] Alterar livros
 - [ ] Remover livros
 - [ ] Exibir livros
+
+- [ ] Null? Alterar usuários, Cadastrar usuários
+- [ ] Error ao remove com 0 users

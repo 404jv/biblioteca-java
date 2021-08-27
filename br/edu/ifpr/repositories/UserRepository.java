@@ -71,4 +71,8 @@ public class UserRepository {
 
     return null;
   }
+
+  public void remove(User user) {
+    this.users.remove(user);
+  }
 }

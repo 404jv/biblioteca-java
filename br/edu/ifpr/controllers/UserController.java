@@ -6,10 +6,10 @@ import br.edu.ifpr.model.User;
 import br.edu.ifpr.repositories.UserRepository;
 
 public class UserController {
-  UserRepository userRepository;
+  UserRepository usersRepository;
 
   public UserController() {
-    this.userRepository = UserRepository.getInstance();
+    this.usersRepository = UserRepository.getInstance();
   }
 
   public void create() {
@@ -23,13 +23,13 @@ public class UserController {
 
     String curso = JOptionPane.showInputDialog("E o curso dele(a)?");
 
-    this.userRepository.create(nome, email, senha, idade, curso);
+    this.usersRepository.create(nome, email, senha, idade, curso);
   }
 
-  public void edit() {
+  public void update() {
     String selectedUserName = selectUser();
 
-    User user = this.userRepository.findByName(selectedUserName);
+    User user = this.usersRepository.findByName(selectedUserName);
 
     String nome = JOptionPane.showInputDialog(
       "O nome atual está " + user.getNome() + ". Qual é o novo?", 
@@ -60,8 +60,16 @@ public class UserController {
     user.setCurso(curso);    
   }
 
+  public void remove() {
+    String selectedUserName = selectUser();
+    
+    User user = this.usersRepository.findByName(selectedUserName);
+
+    this.usersRepository.remove(user);
+  }
+
   public String selectUser() {
-    String[] usersName = this.userRepository.getAllUsersName();
+    String[] usersName = this.usersRepository.getAllUsersName();
 
     String userName = JOptionPane.showInputDialog(
       null, 

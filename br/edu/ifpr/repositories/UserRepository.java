@@ -52,18 +52,6 @@ public class UserRepository {
     } 
   }
   
-  public void edit(String nome, User newUser) {
-    for (User user: this.users) {
-      if (user.getNome() == nome) {
-        user.setNome(newUser.getNome());
-        user.setEmail(newUser.getEmail());
-        user.setSenha(newUser.getSenha());
-        user.setIdade(newUser.getIdade());
-        user.setCurso(newUser.getCurso());
-      }
-    }
-  }
-
   public User findById(String id) {
     for (User user: this.users) {
       if (user.getId() == id) {

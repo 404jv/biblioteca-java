@@ -2,8 +2,6 @@ package br.edu.ifpr.repositories;
 
 import java.util.ArrayList;
 
-import javax.swing.text.Style;
-
 import br.edu.ifpr.model.User;
 
 public class UserRepository {

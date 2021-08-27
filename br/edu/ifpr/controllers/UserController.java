@@ -27,19 +27,9 @@ public class UserController {
   }
 
   public void edit() {
-    String[] usersName = this.userRepository.getAllUsersName();
+    String selectedUserName = selectUser();
 
-    String userName = JOptionPane.showInputDialog(
-      null, 
-      "Usuários Cadastrados",
-      "Usuários Cadastrados", 
-      JOptionPane.ERROR_MESSAGE, 
-      null,
-      usersName,
-      usersName[0]
-    ).toString();
-
-    User user = this.userRepository.findByName(userName);
+    User user = this.userRepository.findByName(selectedUserName);
 
     String nome = JOptionPane.showInputDialog(
       "O nome atual está " + user.getNome() + ". Qual é o novo?", 
@@ -68,5 +58,21 @@ public class UserController {
     user.setSenha(senha);
     user.setIdade(idade);
     user.setCurso(curso);    
+  }
+
+  public String selectUser() {
+    String[] usersName = this.userRepository.getAllUsersName();
+
+    String userName = JOptionPane.showInputDialog(
+      null, 
+      "Usuários Cadastrados",
+      "Usuários Cadastrados", 
+      JOptionPane.ERROR_MESSAGE, 
+      null,
+      usersName,
+      usersName[0]
+    ).toString();
+
+    return userName;
   }
 }

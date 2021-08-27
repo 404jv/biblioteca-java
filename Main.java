@@ -6,7 +6,7 @@ public class Main {
     UserController userController = new UserController();
 
     userController.create();
-    userController.create();
+    userController.update();
     userController.remove();
     // userController.edit();
   }

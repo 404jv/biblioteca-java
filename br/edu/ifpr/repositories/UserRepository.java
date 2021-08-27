@@ -32,6 +32,30 @@ public class UserRepository {
     users.add(user);
   }
 
+  public void update(String id, String nome, String email, String senha, String idade, String curso) {
+    User user = this.findById(id);
+
+    if (nome != null) {
+      user.setNome(nome);
+    }
+
+    if (email != null) {
+      user.setEmail(email);
+    }
+
+    if (senha != null) {
+      user.setSenha(senha);
+    }
+
+    if (idade != null) {
+      user.setIdade(idade);
+    }
+
+    if (curso != null) {
+      user.setCurso(curso);  
+    }
+  }
+
   public String[] getAllUsersName() {
     ArrayList<String> usersName = new ArrayList<>();
   

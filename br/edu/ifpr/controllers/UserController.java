@@ -52,12 +52,11 @@ public class UserController {
       "O curso atual é " + user.getCurso() + ". Qual vai ser o novo?",
       user.getCurso()
     );
+    this.usersRepository.getAll();
 
-    user.setNome(nome);
-    user.setEmail(email);
-    user.setSenha(senha);
-    user.setIdade(idade);
-    user.setCurso(curso);    
+    this.usersRepository.update(user.getId(), nome, email, senha, idade, curso);
+
+    this.usersRepository.getAll();
   }
 
   public void remove() {

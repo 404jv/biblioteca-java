@@ -78,6 +78,20 @@ public class UserController {
 
     this.usersRepository.remove(user);
   }
+  
+  public void show() {
+    String[] usersName = this.usersRepository.getAllUsersName();
+
+    JOptionPane.showMessageDialog(
+      null, 
+      usersName, 
+      "Usuários Cadastrados", 
+      JOptionPane.INFORMATION_MESSAGE
+    );
+
+
+  }
+
 
   public String selectUser() {
     String[] usersName = this.usersRepository.getAllUsersName();
@@ -94,4 +108,5 @@ public class UserController {
 
     return userName;
   }
+
 }

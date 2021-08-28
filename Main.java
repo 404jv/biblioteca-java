@@ -7,6 +7,6 @@ public class Main {
 
     userController.create();
     userController.create();
-    userController.remove();
+    userController.show();
   }
 }

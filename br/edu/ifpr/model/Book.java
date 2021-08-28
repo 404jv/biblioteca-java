@@ -7,6 +7,22 @@ public class Book {
   private String genero;
   private String editora;
   private String anoDePublicacao;
+
+  public Book(
+    String titulo, 
+    int paginas, 
+    String autor, 
+    String genero, 
+    String editora, 
+    String anoDePublicacao
+  ) {
+    this.titulo = titulo;
+    this.paginas = paginas;
+    this.autor = autor;
+    this.genero = genero;
+    this.editora = editora;
+    this.anoDePublicacao = anoDePublicacao;
+  }
   
   public String getTitulo() {
     return titulo;

@@ -4,10 +4,10 @@
 - [x] Remover usuários
 - [x] Exibir usuários
 
-- [ ] Cadastrar livros
+- [x] Cadastrar livros
+- [ ] Exibir livros
 - [ ] Alterar livros
 - [ ] Remover livros
-- [ ] Exibir livros
 
 - [ ] Null? Alterar usuários, Cadastrar usuários
 - [ ] Error ao remove com 0 users

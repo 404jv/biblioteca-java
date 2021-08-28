@@ -2,8 +2,7 @@
 - [x] Cadastrar usuários
 - [x] Alterar usuários
 - [x] Remover usuários
-- [ ] Exibir usuários
-
+- [x] Exibir usuários
 
 - [ ] Cadastrar livros
 - [ ] Alterar livros

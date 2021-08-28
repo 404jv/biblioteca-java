@@ -92,7 +92,6 @@ public class UserController {
 
   }
 
-
   public String selectUser() {
     String[] usersName = this.usersRepository.getAllUsersName();
 
@@ -108,5 +107,4 @@ public class UserController {
 
     return userName;
   }
-
 }

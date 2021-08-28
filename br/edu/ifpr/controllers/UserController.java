@@ -3,13 +3,13 @@ package br.edu.ifpr.controllers;
 import javax.swing.JOptionPane;
 
 import br.edu.ifpr.model.User;
-import br.edu.ifpr.repositories.UserRepository;
+import br.edu.ifpr.repositories.UsersRepository;
 
 public class UserController {
-  UserRepository usersRepository;
+  UsersRepository usersRepository;
 
   public UserController() {
-    this.usersRepository = UserRepository.getInstance();
+    this.usersRepository = UsersRepository.getInstance();
   }
 
   public void create() {

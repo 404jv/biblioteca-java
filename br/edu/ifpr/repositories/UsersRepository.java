@@ -4,20 +4,20 @@ import java.util.ArrayList;
 
 import br.edu.ifpr.model.User;
 
-public class UserRepository {
+public class UsersRepository {
   private ArrayList<User> users;
-  private static UserRepository INSTANCE;
+  private static UsersRepository INSTANCE;
 
-  private UserRepository() {
+  private UsersRepository() {
     this.users = new ArrayList<User>();
   }
 
-  public static UserRepository getInstance() {
-    if (UserRepository.INSTANCE == null) {
-      UserRepository.INSTANCE = new UserRepository();
+  public static UsersRepository getInstance() {
+    if (UsersRepository.INSTANCE == null) {
+      UsersRepository.INSTANCE = new UsersRepository();
     }
 
-    return UserRepository.INSTANCE;
+    return UsersRepository.INSTANCE;
   }
 
   public void create(String nome, String email, String senha, String idade, String curso) {

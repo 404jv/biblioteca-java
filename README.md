@@ -15,4 +15,4 @@
 
 ### Perguntas
 - Se o usuário colocar null em um capo eu deixo?
-- E na edição de um usuário, eu deixo null?
+- Como eu coloco o id e o nome na opção do showInputDialog?

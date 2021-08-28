@@ -52,16 +52,28 @@ public class UserController {
       "O curso atual é " + user.getCurso() + ". Qual vai ser o novo?",
       user.getCurso()
     );
-    this.usersRepository.getAll();
-
+    
     this.usersRepository.update(user.getId(), nome, email, senha, idade, curso);
-
-    this.usersRepository.getAll();
   }
 
   public void remove() {
     String selectedUserName = selectUser();
     
+    String[] options = { "Sim", "Não", "Cancelar" };
+
+    int isConfirmed = JOptionPane.showOptionDialog(
+      null, 
+      "Deseja realmente excluir o usuário " + selectedUserName + "?", 
+      "⚠ Aviso!", 
+      JOptionPane.DEFAULT_OPTION, 
+      JOptionPane.WARNING_MESSAGE, 
+      null, 
+      options, 
+      options[0]
+    );
+
+    if (isConfirmed != 0) return;
+
     User user = this.usersRepository.findByName(selectedUserName);
 
     this.usersRepository.remove(user);

@@ -8,8 +8,8 @@ import br.edu.ifpr.repositories.UsersRepository;
 public class UserController {
   UsersRepository usersRepository;
 
-  public UserController() {
-    this.usersRepository = UsersRepository.getInstance();
+  public UserController(UsersRepository usersRepository) {
+    this.usersRepository = usersRepository;
   }
 
   public void create() {

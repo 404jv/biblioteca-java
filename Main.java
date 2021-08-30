@@ -6,16 +6,16 @@ import br.edu.ifpr.repositories.UsersRepository;
 public class Main {
   public static void main(String[] args) {
 
-    // UserController userController = new UserController(UsersRepository.getInstance());
+    UserController userController = new UserController(UsersRepository.getInstance());
 
-    // userController.create();
-    // userController.create();
-    // userController.show();
+    userController.create();
+    userController.remove();
+    userController.show();
 
-    BookController bookController = new BookController(BooksRepository.getInstance());
+    // BookController bookController = new BookController(BooksRepository.getInstance());
 
 
-    bookController.create();
-    bookController.show();
+    // bookController.create();
+    // bookController.show();
   }
 }

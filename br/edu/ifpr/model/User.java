@@ -14,6 +14,11 @@ public class User {
     this.id = UUID.randomUUID().toString();
   }
 
+  @Override
+  public String toString() {
+    return this.nome;
+  }
+
   public String getId() {
     return id;
   }

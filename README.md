@@ -13,5 +13,5 @@
 - [ ] Error ao remove com 0 users
 
 ### Perguntas
-- Se o usuário colocar null em um capo eu deixo?
+- [x] Se o usuário colocar null em um capo eu deixo? (Não é obrigatório tratar o erro)
 - Como eu coloco o id e o nome na opção do showInputDialog?

@@ -66,6 +66,12 @@ public class UsersRepository {
     return usersName.toArray(new String[usersName.size()]);
   }
 
+  public User[] all() {
+    User[] users = this.users.toArray(new User[this.users.size()]);
+
+    return users;
+  }
+
   public void getAll() {
     for (User user: this.users) {
       System.out.println(" " +  user.getNome() +

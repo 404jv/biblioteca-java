@@ -17,9 +17,13 @@ public class UserController {
 
     String email = JOptionPane.showInputDialog("Digite o email, do(a) " + nome);
 
-    String senha = JOptionPane.showInputDialog("Digite uma senha para o(a) " + nome);
+    String senha = JOptionPane.showInputDialog(
+      "Digite uma senha para o(a) " + nome
+    );
 
-    String idade = JOptionPane.showInputDialog("Qual é a idade do(a) " + nome + "?");
+    String idade = JOptionPane.showInputDialog(
+      "Qual é a idade do(a) " + nome + "?"
+    );
 
     String curso = JOptionPane.showInputDialog("E o curso dele(a)?");
 
@@ -27,9 +31,8 @@ public class UserController {
   }
 
   public void update() {
-    String selectedUserName = selectUser();
+    User user = selectUser();
 
-    User user = this.usersRepository.findByName(selectedUserName);
 
     String nome = JOptionPane.showInputDialog(
       "O nome atual está " + user.getNome() + ". Qual é o novo?", 
@@ -57,13 +60,13 @@ public class UserController {
   }
 
   public void remove() {
-    String selectedUserName = selectUser();
+    User user = selectUser();
     
     String[] options = { "Sim", "Não", "Cancelar" };
 
     int isConfirmed = JOptionPane.showOptionDialog(
       null, 
-      "Deseja realmente excluir o usuário " + selectedUserName + "?", 
+      "Deseja realmente excluir o usuário " + user + "?", 
       "⚠ Aviso!", 
       JOptionPane.DEFAULT_OPTION, 
       JOptionPane.WARNING_MESSAGE, 
@@ -73,8 +76,6 @@ public class UserController {
     );
 
     if (isConfirmed != 0) return;
-
-    User user = this.usersRepository.findByName(selectedUserName);
 
     this.usersRepository.remove(user);
   }
@@ -90,19 +91,19 @@ public class UserController {
     );
   }
 
-  public String selectUser() {
-    String[] usersName = this.usersRepository.getAllUsersName();
+  public User selectUser() {
+    User[] users = this.usersRepository.all();
 
-    String userName = JOptionPane.showInputDialog(
+    User user = (User) JOptionPane.showInputDialog(
       null, 
       "Usuários Cadastrados",
       "Usuários Cadastrados", 
       JOptionPane.ERROR_MESSAGE, 
       null,
-      usersName,
-      usersName[0]
-    ).toString();
+      users,
+      users[0]
+    );
 
-    return userName;
+    return user;
   }
 }

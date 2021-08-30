@@ -1,15 +1,15 @@
 ## ✅ To do list
-- [x] Cadastrar usuários
-- [x] Alterar usuários
-- [x] Remover usuários
-- [x] Exibir usuários
+- [X] Cadastrar usuários
+- [X] Alterar usuários
+- [X] Remover usuários
+- [X] Exibir usuários
 
-- [x] Cadastrar livros
-- [x] Exibir livros
-- [x] Alterar livros
-- [ ] Remover livros
+- [X] Cadastrar livros
+- [X] Exibir livros
+- [X] Alterar livros
+- [X] Remover livros
 
-- [ ] Null? Alterar usuários, Cadastrar usuários
+- [X] Null? Alterar usuários, Cadastrar usuários
 - [ ] Error ao remove com 0 users
 
 ### Perguntas

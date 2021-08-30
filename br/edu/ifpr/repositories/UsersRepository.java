@@ -62,16 +62,6 @@ public class UsersRepository {
     return users;
   }
 
-  public void getAll() {
-    for (User user: this.users) {
-      System.out.println(" " +  user.getNome() +
-      " " + user.getEmail() +
-      " " + user.getSenha() +
-      " " + user.getIdade() +
-      " " + user.getCurso());
-    } 
-  }
-  
   public User findById(String id) {
     for (User user: this.users) {
       if (user.getId() == id) {

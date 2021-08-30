@@ -115,6 +115,20 @@ public class BookController {
 
   public void delete() {
     Book book = selectBook();
+    String[] options = { "Sim", "Não", "Cancelar" };
+
+    int isConfirmed = JOptionPane.showOptionDialog(
+      null, 
+      "Deseja realmente excluir o livro " + book + "?", 
+      "⚠ Aviso!", 
+      JOptionPane.DEFAULT_OPTION, 
+      JOptionPane.WARNING_MESSAGE, 
+      null, 
+      options, 
+      options[0]
+    );
+
+    if (isConfirmed != 0) return;
 
     this.booksRepository.delete(book);
   }

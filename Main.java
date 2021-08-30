@@ -9,7 +9,7 @@ public class Main {
     UserController userController = new UserController(UsersRepository.getInstance());
 
     userController.create();
-    userController.remove();
+    userController.create();
     userController.show();
 
     // BookController bookController = new BookController(BooksRepository.getInstance());

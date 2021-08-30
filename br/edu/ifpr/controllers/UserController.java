@@ -81,11 +81,11 @@ public class UserController {
   }
   
   public void show() {
-    String[] usersName = this.usersRepository.getAllUsersName();
+    User[] users = this.usersRepository.all();
 
     JOptionPane.showMessageDialog(
       null, 
-      usersName, 
+      users, 
       "👥 Usuários Cadastrados", 
       JOptionPane.INFORMATION_MESSAGE
     );

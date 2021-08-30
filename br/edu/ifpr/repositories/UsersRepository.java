@@ -56,16 +56,6 @@ public class UsersRepository {
     }
   }
 
-  public String[] getAllUsersName() {
-    ArrayList<String> usersName = new ArrayList<>();
-  
-    for (User user: this.users) {
-      usersName.add(user.getNome());
-    } 
-
-    return usersName.toArray(new String[usersName.size()]);
-  }
-
   public User[] all() {
     User[] users = this.users.toArray(new User[this.users.size()]);
 

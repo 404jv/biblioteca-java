@@ -62,4 +62,8 @@ public class BooksRepository {
     book.setEditora(editora);
     book.setAnoDePublicacao(anoDePublicacao);
   }
+
+  public void delete(Book book) {
+    this.books.remove(book);
+  }
 }

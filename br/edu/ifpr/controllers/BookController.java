@@ -113,6 +113,12 @@ public class BookController {
     );
   }
 
+  public void delete() {
+    Book book = selectBook();
+
+    this.booksRepository.delete(book);
+  }
+
   public Book selectBook() {
     Book[] books = this.booksRepository.all();
 
@@ -127,9 +133,5 @@ public class BookController {
     );
 
     return book;
-  }
-
-  public void delete() {
-    
   }
 }

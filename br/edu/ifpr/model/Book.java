@@ -24,6 +24,11 @@ public class Book {
     this.anoDePublicacao = anoDePublicacao;
   }
   
+  @Override
+  public String toString() {
+    return this.titulo;
+  }
+
   public String getTitulo() {
     return titulo;
   }

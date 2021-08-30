@@ -40,13 +40,9 @@ public class BooksRepository {
     this.books.add(book);
   }
 
-  public String[] getAllBooksName() {
-    ArrayList<String> booksTitulo = new ArrayList<>();
+  public Book[] all() {
+    Book[] books = this.books.toArray(new Book[this.books.size()]);
 
-    for (Book book: this.books) {
-      booksTitulo.add(book.getTitulo());
-  }
-
-    return booksTitulo.toArray(new String[booksTitulo.size()]);
+    return books;
   }
 }

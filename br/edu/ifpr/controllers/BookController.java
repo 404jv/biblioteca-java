@@ -2,6 +2,7 @@ package br.edu.ifpr.controllers;
 
 import javax.swing.JOptionPane;
 
+import br.edu.ifpr.model.Book;
 import br.edu.ifpr.repositories.BooksRepository;
 
 public class BookController {
@@ -10,7 +11,6 @@ public class BookController {
   public BookController(BooksRepository booksRepository) {
     this.booksRepository = booksRepository;
   }
-
   
   public void create() {
     try {
@@ -57,17 +57,35 @@ public class BookController {
   }
 
   public void show() {
-    String[] booksName = this.booksRepository.getAllBooksName();
+    Book[] books = this.booksRepository.all();
 
     JOptionPane.showMessageDialog(
       null, 
-      booksName,
+      books,
       "📚 Livros Cadastrados",
       JOptionPane.INFORMATION_MESSAGE
     );
   }
 
   public void update() {
-    
+    Book selectedBook = selectBook();
+
+    System.out.println(" " + selectedBook.getTitulo());
+  }
+
+  public Book selectBook() {
+    Book[] books = this.booksRepository.all();
+
+    Book book = (Book) JOptionPane.showInputDialog(
+      null, 
+      "Usuários Cadastrados",
+      "Usuários Cadastrados", 
+      JOptionPane.ERROR_MESSAGE, 
+      null,
+      books,
+      books[0]
+    );
+
+    return book;
   }
 }

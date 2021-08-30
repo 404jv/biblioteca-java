@@ -27,7 +27,7 @@ public class BookController {
       );
   
       String genero = JOptionPane.showInputDialog(
-        "Qual é o gênero " + titulo + "?"
+        "Qual é o gênero do livro " + titulo + "?"
       );
   
       String editora = JOptionPane.showInputDialog(
@@ -71,7 +71,7 @@ public class BookController {
     Book book = selectBook();
 
     String titulo = JOptionPane.showInputDialog(
-      "O titulo atual está " + book.getTitulo() + ". Qual é o novo?", 
+      "O título atual está " + book.getTitulo() + ". Qual é o novo?", 
       book.getTitulo()
     );
 
@@ -103,8 +103,8 @@ public class BookController {
     );
 
     this.booksRepository.update(
-    book,
-    titulo, 
+      book,
+      titulo, 
       paginas, 
       autor,
       genero, 
@@ -118,8 +118,8 @@ public class BookController {
 
     Book book = (Book) JOptionPane.showInputDialog(
       null, 
-      "Usuários Cadastrados",
-      "Usuários Cadastrados", 
+      "📚 Livros Cadastrados",
+      "📚 Livros Cadastrados", 
       JOptionPane.ERROR_MESSAGE, 
       null,
       books,

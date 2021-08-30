@@ -6,7 +6,7 @@
 
 - [x] Cadastrar livros
 - [x] Exibir livros
-- [ ] Alterar livros
+- [x] Alterar livros
 - [ ] Remover livros
 
 - [ ] Null? Alterar usuários, Cadastrar usuários

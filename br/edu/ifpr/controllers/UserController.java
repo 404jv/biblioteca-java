@@ -85,11 +85,9 @@ public class UserController {
     JOptionPane.showMessageDialog(
       null, 
       usersName, 
-      "Usuários Cadastrados", 
+      "👥 Usuários Cadastrados", 
       JOptionPane.INFORMATION_MESSAGE
     );
-
-
   }
 
   public String selectUser() {

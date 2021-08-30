@@ -39,4 +39,14 @@ public class BooksRepository {
 
     this.books.add(book);
   }
+
+  public String[] getAllBooksName() {
+    ArrayList<String> booksTitulo = new ArrayList<>();
+
+    for (Book book: this.books) {
+      booksTitulo.add(book.getTitulo());
+  }
+
+    return booksTitulo.toArray(new String[booksTitulo.size()]);
+  }
 }

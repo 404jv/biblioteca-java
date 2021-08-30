@@ -46,4 +46,15 @@ public class BookController {
       anoDePublicacao
     );
   }
+
+  public void show() {
+    String[] booksName = this.booksRepository.getAllBooksName();
+
+    JOptionPane.showMessageDialog(
+      null, 
+      booksName,
+      "📚 Livros Cadastrados",
+      JOptionPane.INFORMATION_MESSAGE
+    );
+  }
 }

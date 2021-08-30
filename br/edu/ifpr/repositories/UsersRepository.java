@@ -92,7 +92,7 @@ public class UsersRepository {
     return null;
   }
 
-  public void remove(User user) {
+  public void delete(User user) {
     this.users.remove(user);
   }
 }

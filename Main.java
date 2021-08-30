@@ -15,7 +15,6 @@ public class Main {
 
     BookController bookController = new BookController(BooksRepository.getInstance());
 
-
     bookController.create();
     bookController.update();
     bookController.show();

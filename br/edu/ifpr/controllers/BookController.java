@@ -128,4 +128,8 @@ public class BookController {
 
     return book;
   }
+
+  public void delete() {
+    
+  }
 }

@@ -58,7 +58,7 @@ public class UserController {
     this.usersRepository.update(user.getId(), nome, email, senha, idade, curso);
   }
 
-  public void remove() {
+  public void delete() {
     User user = selectUser();
     
     String[] options = { "Sim", "Não", "Cancelar" };
@@ -76,7 +76,7 @@ public class UserController {
 
     if (isConfirmed != 0) return;
 
-    this.usersRepository.remove(user);
+    this.usersRepository.delete(user);
   }
   
   public void show() {

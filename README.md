@@ -5,7 +5,7 @@
 - [x] Exibir usuários
 
 - [x] Cadastrar livros
-- [ ] Exibir livros
+- [x] Exibir livros
 - [ ] Alterar livros
 - [ ] Remover livros
 

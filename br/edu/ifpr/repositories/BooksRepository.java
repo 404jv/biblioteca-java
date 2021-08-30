@@ -45,4 +45,21 @@ public class BooksRepository {
 
     return books;
   }
+
+  public void update(
+    Book book,
+    String titulo, 
+    int paginas, 
+    String autor,  
+    String genero,
+    String editora, 
+    String anoDePublicacao
+  ) {
+    book.setTitulo(titulo);
+    book.setPaginas(paginas);
+    book.setAutor(autor);
+    book.setGenero(genero);
+    book.setEditora(editora);
+    book.setAnoDePublicacao(anoDePublicacao);
+  }
 }

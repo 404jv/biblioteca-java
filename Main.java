@@ -9,13 +9,15 @@ public class Main {
     // UserController userController = new UserController(UsersRepository.getInstance());
 
     // userController.create();
-    // userController.create();
+    // userController.show();
+    // userController.update();
     // userController.show();
 
     BookController bookController = new BookController(BooksRepository.getInstance());
 
 
     bookController.create();
+    bookController.update();
     bookController.show();
   }
 }

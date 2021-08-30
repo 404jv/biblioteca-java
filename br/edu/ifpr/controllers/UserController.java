@@ -33,7 +33,6 @@ public class UserController {
   public void update() {
     User user = selectUser();
 
-
     String nome = JOptionPane.showInputDialog(
       "O nome atual está " + user.getNome() + ". Qual é o novo?", 
       user.getNome()

@@ -68,9 +68,49 @@ public class BookController {
   }
 
   public void update() {
-    Book selectedBook = selectBook();
+    Book book = selectBook();
 
-    System.out.println(" " + selectedBook.getTitulo());
+    String titulo = JOptionPane.showInputDialog(
+      "O titulo atual está " + book.getTitulo() + ". Qual é o novo?", 
+      book.getTitulo()
+    );
+
+    int paginas = Integer.parseInt(
+      JOptionPane.showInputDialog(
+        "A quantidade de páginas atual é " + book.getPaginas() + ". Qual é a quantidade?",
+        book.getPaginas()
+      )
+    );
+
+    String autor = JOptionPane.showInputDialog(
+      "O autor atual está " + book.getAutor() + ". Qual é o autor?",
+      book.getAutor()
+    );
+
+    String genero = JOptionPane.showInputDialog(
+      "O gênero atual está " + book.getGenero() + ". Qual é o atualizado?",
+      book.getGenero()
+    );
+
+    String editora = JOptionPane.showInputDialog(
+      "A editora atual é " + book.getEditora() + ". Qual é a atualizada?",
+      book.getEditora()
+    );
+    
+    String anoDePublicacao = JOptionPane.showInputDialog(
+      "O ano de publicação está " + book.getAnoDePublicacao() + ". Qual é o novo?",
+      book.getEditora()
+    );
+
+    this.booksRepository.update(
+    book,
+    titulo, 
+      paginas, 
+      autor,
+      genero, 
+      editora, 
+      anoDePublicacao
+    );
   }
 
   public Book selectBook() {

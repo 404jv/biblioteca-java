@@ -14,28 +14,48 @@ public class BookController {
   
   public void create() {
     try {
-      String titulo = JOptionPane.showInputDialog("Digite o titulo");
+      String titulo = JOptionPane.showInputDialog(
+        null, 
+        "Digite o titulo",
+        "Cadastro de livro",
+        JOptionPane.QUESTION_MESSAGE
+      );
 
       int paginas = Integer.parseInt(
         JOptionPane.showInputDialog(
-          "Quantas páginas o livro " + titulo + " tem?"
+          null,
+          "Quantas páginas o livro " + titulo + " tem?",
+          "Cadastro de livro",
+          JOptionPane.QUESTION_MESSAGE
         )
       );
   
       String autor = JOptionPane.showInputDialog(
-        "Quem escreveu o livro " + titulo + "?"
+        null,
+        "Quem escreveu o livro " + titulo + "?",
+        "Cadastro de livro",
+        JOptionPane.QUESTION_MESSAGE
       );
   
       String genero = JOptionPane.showInputDialog(
-        "Qual é o gênero do livro " + titulo + "?"
+        null,
+        "Qual é o gênero do livro " + titulo + "?",
+        "Cadastro de livro",
+        JOptionPane.QUESTION_MESSAGE
       );
   
       String editora = JOptionPane.showInputDialog(
-        "Qual é a editora do livro " + titulo + "?"
+        null,
+        "Qual é a editora do livro " + titulo + "?",
+        "Cadastro de livro",
+        JOptionPane.QUESTION_MESSAGE
       );
       
       String anoDePublicacao = JOptionPane.showInputDialog(
-        "E qual é o ano de publicação do livro " + titulo + "?"
+        null,
+        "E qual é o ano de publicação do livro " + titulo + "?",
+        "Cadastro de livro",
+        JOptionPane.QUESTION_MESSAGE
       );
   
       this.booksRepository.create(

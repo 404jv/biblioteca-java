@@ -139,6 +139,17 @@ public class UserController {
   public void show() {
     User[] users = this.usersRepository.all();
 
+    if (users.length == 0) {
+      JOptionPane.showMessageDialog(
+        null,
+        "X_X Não tem usuário cadastrado!",
+        "⚠ Aviso.",
+        JOptionPane.WARNING_MESSAGE
+      );
+
+      return;
+    }
+
     JOptionPane.showMessageDialog(
       null, 
       users, 

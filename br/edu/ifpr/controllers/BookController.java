@@ -59,6 +59,17 @@ public class BookController {
   public void show() {
     Book[] books = this.booksRepository.all();
 
+    if (books.length == 0) {
+      JOptionPane.showMessageDialog(
+        null,
+        "X_X Não tem livro cadastrado!",
+        "⚠ Aviso.",
+        JOptionPane.WARNING_MESSAGE
+      );
+
+      return;
+    }
+
     JOptionPane.showMessageDialog(
       null, 
       books,

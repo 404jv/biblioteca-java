@@ -11,6 +11,7 @@
 
 - [ ] Menu
 - [ ] Regras de negócio
+- [ ] Tirar o "input" do input do user
 
 - [X] Null? Alterar usuários, Cadastrar usuários
 - [ ] Error ao remove com 0 users

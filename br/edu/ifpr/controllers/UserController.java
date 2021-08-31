@@ -27,7 +27,29 @@ public class UserController {
 
     if (senha == null) return;
 
-    int idade = readIdade(nome);
+    int idade = 0;
+
+    while (true) {
+      String idadeString = JOptionPane.showInputDialog(
+        "Qual é a idade do(a) " + nome + "?"
+      );
+
+      if (idadeString == null) return;
+
+      boolean isValidIdade = validateIdade(idadeString);
+
+      if (isValidIdade) {
+        idade = Integer.parseInt(idadeString);
+        break;
+      }
+
+      JOptionPane.showMessageDialog(
+        null, 
+        "❌ Esta idade não é valida! Tente outra.",
+        "⚠ Error!",
+        JOptionPane.ERROR_MESSAGE
+      );
+    }
 
     String curso = JOptionPane.showInputDialog("E o curso dele(a)?");
 
@@ -57,7 +79,29 @@ public class UserController {
 
     if (senha == null) return;
 
-    int idade = readIdade(nome);
+    int idade = 0;
+
+    while (true) {
+      String idadeString = JOptionPane.showInputDialog(
+        "A idade atual é " + user.getIdade() + ". Qual é a nova?"
+      );
+
+      if (idadeString == null) return;
+
+      boolean isValidIdade = validateIdade(idadeString);
+
+      if (isValidIdade) {
+        idade = Integer.parseInt(idadeString);
+        break;
+      }
+
+      JOptionPane.showMessageDialog(
+        null, 
+        "❌ Esta idade não é valida! Tente outra.",
+        "⚠ Error!",
+        JOptionPane.ERROR_MESSAGE
+      );
+    }
 
     String curso = JOptionPane.showInputDialog(
       "O curso atual é " + user.getCurso() + ". Qual vai ser o novo?",
@@ -103,6 +147,18 @@ public class UserController {
     );
   }
 
+  public boolean validateIdade(String idadeString) {
+    try {
+      int idade = Integer.parseInt(idadeString);
+
+      if (idade < 0) return false;
+
+      return true;
+    } catch (Exception e) {
+      return false;
+    }
+  }
+
   public User selectUser() {
     User[] users = this.usersRepository.all();
 
@@ -117,42 +173,5 @@ public class UserController {
     );
 
     return user;
-  }
-  
-  public int readIdade(String userName) {
-    int idade = 0;
-
-    try {
-      idade = Integer.parseInt(
-        JOptionPane.showInputDialog(
-          "Qual é a idade do(a) " + userName + "?"
-        )
-      );
-
-      while (idade < 0) {
-        JOptionPane.showMessageDialog(
-          null, 
-          "❌ Não é possível uma idade menor do que zero!",
-          "⚠ Error!",
-          JOptionPane.ERROR_MESSAGE
-        );
-
-        idade = Integer.parseInt(
-          JOptionPane.showInputDialog(
-            "Qual é a idade do(a) " + userName + "?"
-          )
-        );
-      }
-
-    } catch (Exception e) {
-      JOptionPane.showMessageDialog(
-        null, 
-        "❌ Esta idade não é valida! Tente outra.",
-        "⚠ Error!",
-        JOptionPane.ERROR_MESSAGE
-      );
-    }
-
-    return idade;
   }
 }

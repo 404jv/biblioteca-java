@@ -61,6 +61,8 @@ public class UserController {
   public void update() {
     User user = selectUser();
 
+    if (user == null) return;
+
     String nome = JOptionPane.showInputDialog(
       "O nome atual está " + user.getNome() + ". Qual é o novo?", 
       user.getNome()
@@ -172,6 +174,17 @@ public class UserController {
 
   public User selectUser() {
     User[] users = this.usersRepository.all();
+
+    if (users.length == 0) {
+      JOptionPane.showMessageDialog(
+        null,
+        "X_X Não tem usuário cadastrado!",
+        "⚠ Aviso.",
+        JOptionPane.WARNING_MESSAGE
+      );
+
+      return null;
+    }
 
     User user = (User) JOptionPane.showInputDialog(
       null, 

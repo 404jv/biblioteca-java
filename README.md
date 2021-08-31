@@ -9,8 +9,8 @@
 - [X] Alterar livros
 - [X] Remover livros
 
-- [ ] Menu
-- [ ] Regras de negócio
+- [x] Menu
+- [x] Regras de negócio
 - [ ] Tirar o "input" do input do user
 - [ ] Melhor PT
 

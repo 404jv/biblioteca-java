@@ -81,6 +81,8 @@ public class BookController {
   public void update() {
     Book book = selectBook();
 
+    if (book == null) return;
+
     String titulo = JOptionPane.showInputDialog(
       "O título atual está " + book.getTitulo() + ". Qual é o novo?", 
       book.getTitulo()
@@ -149,6 +151,17 @@ public class BookController {
 
   public Book selectBook() {
     Book[] books = this.booksRepository.all();
+
+    if (books.length == 0) {
+      JOptionPane.showMessageDialog(
+        null,
+        "X_X Não tem livro cadastrado!",
+        "⚠ Aviso.",
+        JOptionPane.WARNING_MESSAGE
+      );
+
+      return null;
+    }
 
     Book book = (Book) JOptionPane.showInputDialog(
       null, 

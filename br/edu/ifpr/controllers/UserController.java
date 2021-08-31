@@ -44,24 +44,29 @@ public class UserController {
       user.getNome()
     );
 
+    if (nome == null) return;
+
     String email = JOptionPane.showInputDialog(
       "O E-mail atual é " + user.getEmail() + ". Qual vai ser o nove?",
       user.getEmail()
     );
 
+    if (email == null) return;
+
     String senha = JOptionPane.showInputDialog("Digite a nova senha.");
 
-    String idade = JOptionPane.showInputDialog(
-      "A idade atual está " + user.getIdade() + ". Qual vai ser a nova?",
-      user.getIdade()
-    );
+    if (senha == null) return;
+
+    int idade = readIdade(nome);
 
     String curso = JOptionPane.showInputDialog(
       "O curso atual é " + user.getCurso() + ". Qual vai ser o novo?",
       user.getCurso()
     );
+
+    if (curso == null) return;
     
-    this.usersRepository.update(nome, email, senha, 1, curso);
+    this.usersRepository.update(nome, email, senha, idade, curso);
   }
 
   public void delete() {

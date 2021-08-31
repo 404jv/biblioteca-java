@@ -1,26 +1,15 @@
 package br.edu.ifpr.model;
 
-import java.util.UUID;
-
 public class User {
-  private String id;
   private String nome;
   private String email;
   private String senha;
   private int idade;
   private String curso;
 
-  public User() {
-    this.id = UUID.randomUUID().toString();
-  }
-
   @Override
   public String toString() {
     return this.nome;
-  }
-
-  public String getId() {
-    return id;
   }
 
   public String getNome() {

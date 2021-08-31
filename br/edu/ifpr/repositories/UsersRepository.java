@@ -1,7 +1,6 @@
 package br.edu.ifpr.repositories;
 
 import java.util.ArrayList;
-import java.util.jar.Attributes.Name;
 
 import br.edu.ifpr.model.User;
 

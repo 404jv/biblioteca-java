@@ -11,7 +11,7 @@
 
 - [x] Menu
 - [x] Regras de negócio
-- [ ] Tirar o "input" do input do user
+- [x] Tirar o "input" do input do user
 - [ ] Melhor PT
 - [ ] Verficar página int
 
@@ -20,4 +20,5 @@
 
 ### Perguntas
 - [x] Se o usuário colocar null em um capo eu deixo? (Não é obrigatório tratar o erro)
-- Como eu coloco o id e o nome na opção do showInputDialog?
+- [x] Como eu coloco o id e o nome na opção do showInputDialog? (Só retornar o user inteiro)
+- [ ] Como eu tiro o "input" do update?

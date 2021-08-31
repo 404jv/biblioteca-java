@@ -91,7 +91,6 @@ public class BookController {
     );
   } 
 
-
   public void show() {
     Book[] books = this.booksRepository.all();
 
@@ -120,36 +119,60 @@ public class BookController {
     if (book == null) return;
 
     String titulo = JOptionPane.showInputDialog(
-      "O título atual está " + book.getTitulo() + ". Qual é o novo?", 
+      "O título atual está " + book.getTitulo() + ". Qual é o novo?",
       book.getTitulo()
     );
 
-    int paginas = Integer.parseInt(
-      JOptionPane.showInputDialog(
-        "A quantidade de páginas atual é " + book.getPaginas() + ". Qual é a quantidade?",
-        book.getPaginas()
-      )
-    );
+    int paginas = 0;
+
+    while (true) {
+      String paginasString = JOptionPane.showInputDialog(
+        "A quantidade de páginas atual está " + book.getPaginas() + ". Qual é a nova?",
+        "" + book.getPaginas()
+      );
+
+      if (paginasString == null) return;
+
+      if (validatePagina(paginasString)) {
+        paginas = Integer.parseInt(paginasString);
+        break;
+      }
+
+      JOptionPane.showMessageDialog(
+        null, 
+        "⚠ Você precisa digitar o número de páginas valido!",
+        "⚠ Error!",
+        JOptionPane.ERROR_MESSAGE
+      );
+    }
 
     String autor = JOptionPane.showInputDialog(
       "O autor atual está " + book.getAutor() + ". Qual é o autor?",
       book.getAutor()
     );
 
+    if (autor == null) return;
+
     String genero = JOptionPane.showInputDialog(
       "O gênero atual está " + book.getGenero() + ". Qual é o atualizado?",
       book.getGenero()
     );
 
+    if (genero == null) return;
+
     String editora = JOptionPane.showInputDialog(
       "A editora atual é " + book.getEditora() + ". Qual é a atualizada?",
       book.getEditora()
     );
+
+    if (editora == null) return;
     
     String anoDePublicacao = JOptionPane.showInputDialog(
       "O ano de publicação está " + book.getAnoDePublicacao() + ". Qual é o novo?",
       book.getEditora()
     );
+
+    if (anoDePublicacao == null) return;
 
     this.booksRepository.update(
       book,

@@ -1,6 +1,7 @@
 package br.edu.ifpr.repositories;
 
 import java.util.ArrayList;
+import java.util.jar.Attributes.Name;
 
 import br.edu.ifpr.model.User;
 
@@ -20,7 +21,13 @@ public class UsersRepository {
     return UsersRepository.INSTANCE;
   }
 
-  public void create(String nome, String email, String senha, String idade, String curso) {
+  public void create(
+    String nome, 
+    String email, 
+    String senha, 
+    int idade, 
+    String curso
+  ) {
     User user = new User();
 
     user.setNome(nome);
@@ -32,44 +39,26 @@ public class UsersRepository {
     users.add(user);
   }
 
-  public void update(String id, String nome, String email, String senha, String idade, String curso) {
-    User user = this.findById(id);
+  public void update(
+    String nome, 
+    String email, 
+    String senha, 
+    int idade, 
+    String curso
+  ) {
+    User user = this.findByName(nome);
 
-    if (nome != null) {
-      user.setNome(nome);
-    }
-
-    if (email != null) {
-      user.setEmail(email);
-    }
-
-    if (senha != null) {
-      user.setSenha(senha);
-    }
-
-    if (idade != null) {
-      user.setIdade(idade);
-    }
-
-    if (curso != null) {
-      user.setCurso(curso);  
-    }
+    user.setNome(nome);
+    user.setEmail(email);
+    user.setSenha(senha);
+    user.setIdade(idade);
+    user.setCurso(curso);  
   }
 
   public User[] all() {
     User[] users = this.users.toArray(new User[this.users.size()]);
 
     return users;
-  }
-
-  public User findById(String id) {
-    for (User user: this.users) {
-      if (user.getId() == id) {
-        return user;
-      }
-    }
-
-    return null;
   }
 
   public User findByName(String nome) {

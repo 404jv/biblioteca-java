@@ -115,6 +115,9 @@ public class BookController {
 
   public void delete() {
     Book book = selectBook();
+
+    if (book == null) return;
+
     String[] options = { "Sim", "Não", "Cancelar" };
 
     int isConfirmed = JOptionPane.showOptionDialog(

@@ -9,6 +9,9 @@
 - [X] Alterar livros
 - [X] Remover livros
 
+- [ ] Menu
+- [ ] Regras de negócio
+
 - [X] Null? Alterar usuários, Cadastrar usuários
 - [ ] Error ao remove com 0 users
 

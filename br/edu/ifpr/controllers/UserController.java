@@ -14,18 +14,24 @@ public class UserController {
 
   public void create() {
     String nome = JOptionPane.showInputDialog("Digite o nome");
+    
+    if (nome == null) return;
 
     String email = JOptionPane.showInputDialog("Digite o email, do(a) " + nome);
+
+    if (email == null) return;
 
     String senha = JOptionPane.showInputDialog(
       "Digite uma senha para o(a) " + nome
     );
 
-    String idade = JOptionPane.showInputDialog(
-      "Qual é a idade do(a) " + nome + "?"
-    );
+    if (senha == null) return;
+
+    int idade = readIdade(nome);
 
     String curso = JOptionPane.showInputDialog("E o curso dele(a)?");
+
+    if (curso == null) return;
 
     this.usersRepository.create(nome, email, senha, idade, curso);
   }
@@ -55,12 +61,14 @@ public class UserController {
       user.getCurso()
     );
     
-    this.usersRepository.update(user.getId(), nome, email, senha, idade, curso);
+    this.usersRepository.update(nome, email, senha, 1, curso);
   }
 
   public void delete() {
     User user = selectUser();
     
+    if (user == null) return;
+
     String[] options = { "Sim", "Não", "Cancelar" };
 
     int isConfirmed = JOptionPane.showOptionDialog(
@@ -104,5 +112,42 @@ public class UserController {
     );
 
     return user;
+  }
+  
+  public int readIdade(String userName) {
+    int idade = 0;
+
+    try {
+      idade = Integer.parseInt(
+        JOptionPane.showInputDialog(
+          "Qual é a idade do(a) " + userName + "?"
+        )
+      );
+
+      while (idade < 0) {
+        JOptionPane.showMessageDialog(
+          null, 
+          "❌ Não é possível uma idade menor do que zero!",
+          "⚠ Error!",
+          JOptionPane.ERROR_MESSAGE
+        );
+
+        idade = Integer.parseInt(
+          JOptionPane.showInputDialog(
+            "Qual é a idade do(a) " + userName + "?"
+          )
+        );
+      }
+
+    } catch (Exception e) {
+      JOptionPane.showMessageDialog(
+        null, 
+        "❌ Esta idade não é valida! Tente outra.",
+        "⚠ Error!",
+        JOptionPane.ERROR_MESSAGE
+      );
+    }
+
+    return idade;
   }
 }

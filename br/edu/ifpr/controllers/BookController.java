@@ -13,68 +13,84 @@ public class BookController {
   }
   
   public void create() {
-    try {
-      String titulo = JOptionPane.showInputDialog(
-        null, 
-        "Digite o titulo",
+    String titulo = JOptionPane.showInputDialog(
+      null, 
+      "Digite o titulo",
+      "Cadastro de livro",
+      JOptionPane.QUESTION_MESSAGE
+    );
+
+    if (titulo == null) return;
+
+    int paginas = 0;
+
+    while (true) {
+      String paginasString = JOptionPane.showInputDialog(
+        null,
+        "Quantas páginas o livro " + titulo + " tem?",
         "Cadastro de livro",
         JOptionPane.QUESTION_MESSAGE
       );
 
-      int paginas = Integer.parseInt(
-        JOptionPane.showInputDialog(
-          null,
-          "Quantas páginas o livro " + titulo + " tem?",
-          "Cadastro de livro",
-          JOptionPane.QUESTION_MESSAGE
-        )
-      );
-  
-      String autor = JOptionPane.showInputDialog(
-        null,
-        "Quem escreveu o livro " + titulo + "?",
-        "Cadastro de livro",
-        JOptionPane.QUESTION_MESSAGE
-      );
-  
-      String genero = JOptionPane.showInputDialog(
-        null,
-        "Qual é o gênero do livro " + titulo + "?",
-        "Cadastro de livro",
-        JOptionPane.QUESTION_MESSAGE
-      );
-  
-      String editora = JOptionPane.showInputDialog(
-        null,
-        "Qual é a editora do livro " + titulo + "?",
-        "Cadastro de livro",
-        JOptionPane.QUESTION_MESSAGE
-      );
-      
-      String anoDePublicacao = JOptionPane.showInputDialog(
-        null,
-        "E qual é o ano de publicação do livro " + titulo + "?",
-        "Cadastro de livro",
-        JOptionPane.QUESTION_MESSAGE
-      );
-  
-      this.booksRepository.create(
-        titulo, 
-        paginas, 
-        autor, 
-        genero, 
-        editora, 
-        anoDePublicacao
-      );
-    } catch (NumberFormatException e) {
+      if (validatePagina(paginasString)) {
+        paginas = Integer.parseInt(paginasString);
+        break;
+      }
+
       JOptionPane.showMessageDialog(
         null, 
-        "Você precisa digitar um número!",
+        "⚠ Você precisa digitar o número de páginas valido!",
         "⚠ Error!",
         JOptionPane.ERROR_MESSAGE
       );
     }
-  }
+
+    String autor = JOptionPane.showInputDialog(
+      null,
+      "Quem escreveu o livro " + titulo + "?",
+      "Cadastro de livro",
+      JOptionPane.QUESTION_MESSAGE
+    );
+
+    if (autor == null) return;
+
+    String genero = JOptionPane.showInputDialog(
+      null,
+      "Qual é o gênero do livro " + titulo + "?",
+      "Cadastro de livro",
+      JOptionPane.QUESTION_MESSAGE
+    );
+
+    if (genero == null) return;
+
+    String editora = JOptionPane.showInputDialog(
+      null,
+      "Qual é a editora do livro " + titulo + "?",
+      "Cadastro de livro",
+      JOptionPane.QUESTION_MESSAGE
+    );
+    
+    if (editora == null) return;
+
+    String anoDePublicacao = JOptionPane.showInputDialog(
+      null,
+      "E qual é o ano de publicação do livro " + titulo + "?",
+      "Cadastro de livro",
+      JOptionPane.QUESTION_MESSAGE
+    );
+
+    if (anoDePublicacao == null) return;
+
+    this.booksRepository.create(
+      titulo, 
+      paginas, 
+      autor, 
+      genero, 
+      editora, 
+      anoDePublicacao
+    );
+  } 
+
 
   public void show() {
     Book[] books = this.booksRepository.all();
@@ -167,6 +183,18 @@ public class BookController {
     if (isConfirmed != 0) return;
 
     this.booksRepository.delete(book);
+  }
+
+  public boolean validatePagina(String paginasString) {
+    try {
+      int paginas = Integer.parseInt(paginasString);
+
+      if (paginas <= 0) return false;
+
+      return true;
+    } catch (Exception e) {
+      return false;
+    }
   }
 
   public Book selectBook() {

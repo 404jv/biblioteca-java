@@ -12,11 +12,11 @@
 - [x] Menu
 - [x] Regras de negócio
 - [x] Tirar o "input" do input do user
-- [ ] Melhor PT
-- [ ] Verficar página int
+- [x] Verficar página int
+- [x] Melhor PT
 
 - [X] Null? Alterar usuários, Cadastrar usuários
-- [ ] Error ao remove com 0 users
+- [x] Error ao remove com 0 users
 
 ### Perguntas
 - [x] Se o usuário colocar null em um capo eu deixo? (Não é obrigatório tratar o erro)

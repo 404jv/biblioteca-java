@@ -6,13 +6,14 @@ import br.edu.ifpr.repositories.BooksRepository;
 import br.edu.ifpr.repositories.UsersRepository;
 
 public class Main {
-  static BookController bookController = new BookController(
+  public static BookController bookController = new BookController(
     BooksRepository.getInstance()
   );
 
-  static UserController userController = new UserController(
+  public static UserController userController = new UserController(
     UsersRepository.getInstance()
   );
+
   public static void main(String[] args) {
 
     while(true) {

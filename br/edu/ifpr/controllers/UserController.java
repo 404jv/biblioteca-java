@@ -13,23 +13,33 @@ public class UserController {
   }
 
   public void create() {
-    String nome = inputStringValue("Digite o nome");
+    String nome = inputStringValue("Digite o nome", "Cadastro de Usuário", "");
     
     if (nome == null) return;
 
-    String email = inputStringValue("Digite o email, do(a) " + nome);
+    String email = inputStringValue(
+      "Digite o email, do(a) " + nome, 
+      "Cadastro de Usuário",
+      ""
+    );
     
     if (email == null) return;
     
-    String senha = inputStringValue("Digite uma senha para o(a) " + nome);
+    String senha = inputStringValue(
+      "Digite uma senha para o(a) " + nome, 
+      "Cadastro de Usuário",
+      ""
+    );
 
     if (senha == null) return;
 
     int idade = 0;
 
     while (true) {
-      String idadeString = JOptionPane.showInputDialog(
-        "Qual é a idade do(a) " + nome + "?"
+      String idadeString = inputStringValue(
+        "Qual é a idade do(a) " + nome + "?",
+        "Cadastro de Usuário",
+        ""
       );
 
       if (idadeString == null) return;
@@ -44,7 +54,7 @@ public class UserController {
       showError("❌ Esta idade não é valida! Tente outra.", "⚠ Error!");
     }
 
-    String curso = inputStringValue("E o curso dele(a)?");
+    String curso = inputStringValue("E o curso dele(a)?", "Cadastro de Usuário", "");
 
     if (curso == null) return;
 
@@ -57,26 +67,36 @@ public class UserController {
     if (user == null) return;
 
     String nome = inputStringValue(
-      "O nome atual está " + user.getNome() + ". Qual é o novo?"
+      "O nome atual está " + user.getNome() + ". Qual é o novo?",
+      "✂ Alterar Usuário",
+      user.getNome()
     );
 
     if (nome == null) return;
 
     String email = inputStringValue(
-      "O E-mail atual é " + user.getEmail() + ". Qual vai ser o nove?"
+      "O E-mail atual é " + user.getEmail() + ". Qual vai ser o nove?",
+      "✂ Alterar Usuário",
+      user.getEmail()
     );
 
     if (email == null) return;
 
-    String senha = inputStringValue("Digite a nova senha.");
-
+    String senha = inputStringValue(
+      "Digite a nova senha.", 
+      "✂ Alterar Usuário",
+      user.getSenha()
+    );
+    
     if (senha == null) return;
 
     int idade = 0;
 
     while (true) {
-      String idadeString = JOptionPane.showInputDialog(
-        "A idade atual é " + user.getIdade() + ". Qual é a nova?"
+      String idadeString = inputStringValue(
+        "A idade atual é " + user.getIdade() + ". Qual é a nova?",
+        "✂ Alterar Usuário",
+        "" + user.getIdade()
       );
 
       if (idadeString == null) return;
@@ -92,7 +112,9 @@ public class UserController {
     }
 
     String curso = inputStringValue(
-      "O curso atual é " + user.getCurso() + ". Qual vai ser o novo?"
+      "O curso atual é " + user.getCurso() + ". Qual vai ser o novo?",
+      "✂ Alterar Usuário",
+      user.getCurso()
     );
 
     if (curso == null) return;
@@ -140,9 +162,21 @@ public class UserController {
     );
   }
 
-  private String inputStringValue(String inputMessage) {
+  private String inputStringValue(
+    String inputMessage, 
+    String inputTitle, 
+    String defaultValue
+  ) {
     while (true) {
-      String value = JOptionPane.showInputDialog(inputMessage);
+      String value = (String) JOptionPane.showInputDialog(
+        null,
+        inputMessage,
+        inputTitle,
+        JOptionPane.QUESTION_MESSAGE,
+        null,
+        null,
+        defaultValue
+      );
 
       if (value == null) return null;
 

@@ -16,7 +16,11 @@
 - [x] Melhor PT
 
 - [X] Null? Alterar usuários, Cadastrar usuários
-- [x] Error ao remove com 0 users
+- [X] Error ao remove com 0 users
+
+- [X] Dixar campos do User obrigatórios
+- [ ] Dixar campos do Book obrigatórios
+- [ ] Passar o atributo `AnoDePublicacao` para `int`
 
 ### Perguntas
 - [x] Se o usuário colocar null em um capo eu deixo? (Não é obrigatório tratar o erro)

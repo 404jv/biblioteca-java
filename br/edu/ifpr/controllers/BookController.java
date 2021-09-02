@@ -13,70 +13,62 @@ public class BookController {
   }
   
   public void create() {
-    String titulo = JOptionPane.showInputDialog(
-      null, 
+    String titulo = inputStringValue(
       "Digite o titulo",
       "Cadastro de livro",
-      JOptionPane.QUESTION_MESSAGE
+      ""
     );
 
     if (titulo == null) return;
 
     int paginas = 0;
-
     while (true) {
-      String paginasString = JOptionPane.showInputDialog(
-        null,
+      String paginasString = inputStringValue(
         "Quantas páginas o livro " + titulo + " tem?",
         "Cadastro de livro",
-        JOptionPane.QUESTION_MESSAGE
+        ""
       );
 
-      if (validatePagina(paginasString)) {
+      if (paginasString == null) return;
+
+      boolean isValidPagina = validatePagina(paginasString);
+
+      if (isValidPagina) {
         paginas = Integer.parseInt(paginasString);
         break;
       }
 
-      JOptionPane.showMessageDialog(
-        null, 
-        "⚠ Você precisa digitar o número de páginas valido!",
-        "⚠ Error!",
-        JOptionPane.ERROR_MESSAGE
-      );
+      showError("⚠ Você precisa digitar o número de páginas valido!", "⚠ Error!");
     }
 
-    String autor = JOptionPane.showInputDialog(
-      null,
+    String autor = inputStringValue(
       "Quem escreveu o livro " + titulo + "?",
       "Cadastro de livro",
-      JOptionPane.QUESTION_MESSAGE
+      ""
     );
 
     if (autor == null) return;
 
-    String genero = JOptionPane.showInputDialog(
-      null,
+    String genero = inputStringValue(
       "Qual é o gênero do livro " + titulo + "?",
       "Cadastro de livro",
-      JOptionPane.QUESTION_MESSAGE
+      ""
     );
 
     if (genero == null) return;
 
-    String editora = JOptionPane.showInputDialog(
-      null,
+    String editora = inputStringValue(
       "Qual é a editora do livro " + titulo + "?",
       "Cadastro de livro",
-      JOptionPane.QUESTION_MESSAGE
+      ""
     );
     
     if (editora == null) return;
 
-    String anoDePublicacao = JOptionPane.showInputDialog(
-      null,
+    String anoDePublicacao = inputStringValue(
       "E qual é o ano de publicação do livro " + titulo + "?",
       "Cadastro de livro",
-      JOptionPane.QUESTION_MESSAGE
+      ""
     );
 
     if (anoDePublicacao == null) return;
@@ -95,13 +87,7 @@ public class BookController {
     Book[] books = this.booksRepository.all();
 
     if (books.length == 0) {
-      JOptionPane.showMessageDialog(
-        null,
-        "X_X Não tem livro cadastrado!",
-        "⚠ Aviso.",
-        JOptionPane.WARNING_MESSAGE
-      );
-
+      showError("X_X Não tem livro cadastrado!", "⚠ Aviso.");
       return;
     }
 
@@ -118,16 +104,18 @@ public class BookController {
 
     if (book == null) return;
 
-    String titulo = JOptionPane.showInputDialog(
+    String titulo = inputStringValue(
       "O título atual está " + book.getTitulo() + ". Qual é o novo?",
+      "✂ Alterar Livro",
       book.getTitulo()
     );
 
     int paginas = 0;
 
     while (true) {
-      String paginasString = JOptionPane.showInputDialog(
+      String paginasString = inputStringValue(
         "A quantidade de páginas atual está " + book.getPaginas() + ". Qual é a nova?",
+        "✂ Alterar Livro",
         "" + book.getPaginas()
       );
 
@@ -138,37 +126,36 @@ public class BookController {
         break;
       }
 
-      JOptionPane.showMessageDialog(
-        null, 
-        "⚠ Você precisa digitar o número de páginas valido!",
-        "⚠ Error!",
-        JOptionPane.ERROR_MESSAGE
-      );
+      showError("⚠ Você precisa digitar o número de páginas valido!", "⚠ Error!");
     }
 
-    String autor = JOptionPane.showInputDialog(
+    String autor = inputStringValue(
       "O autor atual está " + book.getAutor() + ". Qual é o autor?",
+      "✂ Alterar Livro",
       book.getAutor()
     );
 
     if (autor == null) return;
 
-    String genero = JOptionPane.showInputDialog(
+    String genero = inputStringValue(
       "O gênero atual está " + book.getGenero() + ". Qual é o atualizado?",
+      "✂ Alterar Livro",
       book.getGenero()
     );
 
     if (genero == null) return;
 
-    String editora = JOptionPane.showInputDialog(
+    String editora = inputStringValue(
       "A editora atual é " + book.getEditora() + ". Qual é a atualizada?",
+      "✂ Alterar Livro",
       book.getEditora()
     );
 
     if (editora == null) return;
     
-    String anoDePublicacao = JOptionPane.showInputDialog(
+    String anoDePublicacao = inputStringValue(
       "O ano de publicação está " + book.getAnoDePublicacao() + ". Qual é o novo?",
+      "✂ Alterar Livro",
       book.getEditora()
     );
 
@@ -208,6 +195,39 @@ public class BookController {
     this.booksRepository.delete(book);
   }
 
+  private String inputStringValue(
+    String inputMessage, 
+    String inputTitle, 
+    String defaultValue
+  ) {
+    while (true) {
+      String value = (String) JOptionPane.showInputDialog(
+        null,
+        inputMessage,
+        inputTitle,
+        JOptionPane.QUESTION_MESSAGE,
+        null,
+        null,
+        defaultValue
+      );
+
+      if (value == null) return null;
+
+      if (!value.isEmpty()) return value;
+
+      showError("⚠ Esse campo é obrigatório! Digite um valor correto.", "⚠ Error!");
+    }
+  }
+
+  private void showError(String errorMessage, String errorTitle) {
+    JOptionPane.showMessageDialog(
+      null, 
+      errorMessage,
+      errorTitle,
+      JOptionPane.ERROR_MESSAGE
+    );
+  }
+
   public boolean validatePagina(String paginasString) {
     try {
       int paginas = Integer.parseInt(paginasString);
@@ -224,13 +244,7 @@ public class BookController {
     Book[] books = this.booksRepository.all();
 
     if (books.length == 0) {
-      JOptionPane.showMessageDialog(
-        null,
-        "X_X Não tem livro cadastrado!",
-        "⚠ Aviso.",
-        JOptionPane.WARNING_MESSAGE
-      );
-
+      showError("X_X Não tem livro cadastrado!", "⚠ Aviso.");
       return null;
     }
 

@@ -19,7 +19,7 @@
 - [X] Error ao remove com 0 users
 
 - [X] Dixar campos do User obrigatórios
-- [ ] Dixar campos do Book obrigatórios
+- [X] Dixar campos do Book obrigatórios
 - [ ] Passar o atributo `AnoDePublicacao` para `int`
 
 ### Perguntas

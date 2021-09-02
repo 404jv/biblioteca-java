@@ -26,7 +26,7 @@ public class BooksRepository {
     String autor,  
     String genero,
     String editora, 
-    String anoDePublicacao
+    int anoDePublicacao
   ) {
     Book book = new Book(
       titulo, 
@@ -53,7 +53,7 @@ public class BooksRepository {
     String autor,  
     String genero,
     String editora, 
-    String anoDePublicacao
+    int anoDePublicacao
   ) {
     book.setTitulo(titulo);
     book.setPaginas(paginas);

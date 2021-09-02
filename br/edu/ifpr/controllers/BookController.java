@@ -65,13 +65,13 @@ public class BookController {
     
     if (editora == null) return;
 
-    String anoDePublicacao = inputStringValue(
-      "E qual é o ano de publicação do livro " + titulo + "?",
-      "Cadastro de livro",
-      ""
+    int anoDePublicacao = Integer.parseInt(
+      inputStringValue(
+        "E qual é o ano de publicação do livro " + titulo + "?",
+        "Cadastro de livro",
+        ""
+      )
     );
-
-    if (anoDePublicacao == null) return;
 
     this.booksRepository.create(
       titulo, 
@@ -153,13 +153,13 @@ public class BookController {
 
     if (editora == null) return;
     
-    String anoDePublicacao = inputStringValue(
-      "O ano de publicação está " + book.getAnoDePublicacao() + ". Qual é o novo?",
-      "✂ Alterar Livro",
-      book.getEditora()
+    int anoDePublicacao = Integer.parseInt(
+      inputStringValue(
+        "O ano de publicação está " + book.getAnoDePublicacao() + ". Qual é o novo?",
+        "✂ Alterar Livro",
+        book.getEditora()
+      )
     );
-
-    if (anoDePublicacao == null) return;
 
     this.booksRepository.update(
       book,

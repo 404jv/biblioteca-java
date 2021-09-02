@@ -6,7 +6,7 @@ public class Book {
   private String autor;
   private String genero;
   private String editora;
-  private String anoDePublicacao;
+  private int anoDePublicacao;
 
   public Book(
     String titulo, 
@@ -14,7 +14,7 @@ public class Book {
     String autor, 
     String genero, 
     String editora, 
-    String anoDePublicacao
+    int anoDePublicacao
   ) {
     this.titulo = titulo;
     this.paginas = paginas;
@@ -69,11 +69,11 @@ public class Book {
     this.editora = editora;
   }
 
-  public String getAnoDePublicacao() {
+  public int getAnoDePublicacao() {
     return anoDePublicacao;
   }
 
-  public void setAnoDePublicacao(String anoDePublicacao) {
+  public void setAnoDePublicacao(int anoDePublicacao) {
     this.anoDePublicacao = anoDePublicacao;
   }
 }

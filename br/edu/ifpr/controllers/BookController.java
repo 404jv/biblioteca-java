@@ -31,7 +31,7 @@ public class BookController {
 
       if (paginasString == null) return;
 
-      boolean isValidPagina = validatePagina(paginasString);
+      boolean isValidPagina = isPositiveNumber(paginasString);
 
       if (isValidPagina) {
         paginas = Integer.parseInt(paginasString);
@@ -64,14 +64,26 @@ public class BookController {
     );
     
     if (editora == null) return;
-
-    int anoDePublicacao = Integer.parseInt(
-      inputStringValue(
+        
+    int anoDePublicacao = 0;
+    while (true) {
+      String anoDePublicacaoString = inputStringValue(
         "E qual é o ano de publicação do livro " + titulo + "?",
         "Cadastro de livro",
         ""
-      )
-    );
+      );
+
+      if (anoDePublicacaoString == null) return;
+
+      boolean isPositiveNumber = isPositiveNumber(anoDePublicacaoString);
+
+      if (isPositiveNumber) {
+        paginas = Integer.parseInt(anoDePublicacaoString);
+        break;
+      }
+
+      showError("⚠ Você precisa digitar o número de páginas valido!", "⚠ Error!");
+    }
 
     this.booksRepository.create(
       titulo, 
@@ -111,18 +123,19 @@ public class BookController {
     );
 
     int paginas = 0;
-
     while (true) {
-      String paginasString = inputStringValue(
+      String paginaString = inputStringValue(
         "A quantidade de páginas atual está " + book.getPaginas() + ". Qual é a nova?",
         "✂ Alterar Livro",
         "" + book.getPaginas()
       );
 
-      if (paginasString == null) return;
+      if (paginaString == null) return;
 
-      if (validatePagina(paginasString)) {
-        paginas = Integer.parseInt(paginasString);
+      boolean isPositiveNumber = isPositiveNumber(paginaString);
+
+      if (isPositiveNumber) {
+        paginas = Integer.parseInt(paginaString);
         break;
       }
 
@@ -153,13 +166,25 @@ public class BookController {
 
     if (editora == null) return;
     
-    int anoDePublicacao = Integer.parseInt(
-      inputStringValue(
+    int anoDePublicacao = 0;
+    while (true) {
+      String anoDePublicacaoString = inputStringValue(
         "O ano de publicação está " + book.getAnoDePublicacao() + ". Qual é o novo?",
         "✂ Alterar Livro",
         book.getEditora()
-      )
-    );
+      );
+
+      if (anoDePublicacaoString == null) return;
+
+      boolean isPositiveNumber = isPositiveNumber(anoDePublicacaoString);
+
+      if (isPositiveNumber) {
+        paginas = Integer.parseInt(anoDePublicacaoString);
+        break;
+      }
+
+      showError("⚠ Você precisa digitar o número de páginas valido!", "⚠ Error!");
+    }
 
     this.booksRepository.update(
       book,
@@ -228,11 +253,11 @@ public class BookController {
     );
   }
 
-  public boolean validatePagina(String paginasString) {
+  public boolean isPositiveNumber(String numberString) {
     try {
-      int paginas = Integer.parseInt(paginasString);
+      int number = Integer.parseInt(numberString);
 
-      if (paginas <= 0) return false;
+      if (number <= 0) return false;
 
       return true;
     } catch (Exception e) {

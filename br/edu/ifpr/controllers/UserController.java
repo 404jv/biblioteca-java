@@ -13,17 +13,15 @@ public class UserController {
   }
 
   public void create() {
-    String nome = JOptionPane.showInputDialog("Digite o nome");
+    String nome = inputStringValue("Digite o nome");
     
     if (nome == null) return;
 
-    String email = JOptionPane.showInputDialog("Digite o email, do(a) " + nome);
-
+    String email = inputStringValue("Digite o email, do(a) " + nome);
+    
     if (email == null) return;
-
-    String senha = JOptionPane.showInputDialog(
-      "Digite uma senha para o(a) " + nome
-    );
+    
+    String senha = inputStringValue("Digite uma senha para o(a) " + nome);
 
     if (senha == null) return;
 
@@ -43,15 +41,10 @@ public class UserController {
         break;
       }
 
-      JOptionPane.showMessageDialog(
-        null, 
-        "❌ Esta idade não é valida! Tente outra.",
-        "⚠ Error!",
-        JOptionPane.ERROR_MESSAGE
-      );
+      showError("❌ Esta idade não é valida! Tente outra.", "⚠ Error!");
     }
 
-    String curso = JOptionPane.showInputDialog("E o curso dele(a)?");
+    String curso = inputStringValue("E o curso dele(a)?");
 
     if (curso == null) return;
 
@@ -63,21 +56,19 @@ public class UserController {
 
     if (user == null) return;
 
-    String nome = JOptionPane.showInputDialog(
-      "O nome atual está " + user.getNome() + ". Qual é o novo?", 
-      user.getNome()
+    String nome = inputStringValue(
+      "O nome atual está " + user.getNome() + ". Qual é o novo?"
     );
 
     if (nome == null) return;
 
-    String email = JOptionPane.showInputDialog(
-      "O E-mail atual é " + user.getEmail() + ". Qual vai ser o nove?",
-      user.getEmail()
+    String email = inputStringValue(
+      "O E-mail atual é " + user.getEmail() + ". Qual vai ser o nove?"
     );
 
     if (email == null) return;
 
-    String senha = JOptionPane.showInputDialog("Digite a nova senha.");
+    String senha = inputStringValue("Digite a nova senha.");
 
     if (senha == null) return;
 
@@ -97,17 +88,11 @@ public class UserController {
         break;
       }
 
-      JOptionPane.showMessageDialog(
-        null, 
-        "❌ Esta idade não é valida! Tente outra.",
-        "⚠ Error!",
-        JOptionPane.ERROR_MESSAGE
-      );
+      showError("❌ Esta idade não é valida! Tente outra.", "⚠ Error!");
     }
 
-    String curso = JOptionPane.showInputDialog(
-      "O curso atual é " + user.getCurso() + ". Qual vai ser o novo?",
-      user.getCurso()
+    String curso = inputStringValue(
+      "O curso atual é " + user.getCurso() + ". Qual vai ser o novo?"
     );
 
     if (curso == null) return;
@@ -142,12 +127,7 @@ public class UserController {
     User[] users = this.usersRepository.all();
 
     if (users.length == 0) {
-      JOptionPane.showMessageDialog(
-        null,
-        "X_X Não tem usuário cadastrado!",
-        "⚠ Aviso.",
-        JOptionPane.WARNING_MESSAGE
-      );
+      showError("X_X Não tem usuário cadastrado!", "⚠ Aviso.");
 
       return;
     }
@@ -160,7 +140,28 @@ public class UserController {
     );
   }
 
-  public boolean validateIdade(String idadeString) {
+  private String inputStringValue(String inputMessage) {
+    while (true) {
+      String value = JOptionPane.showInputDialog(inputMessage);
+
+      if (value == null) return null;
+
+      if (!value.isEmpty()) return value;
+
+      showError("⚠ Esse campo é obrigatório! Digite um valor correto.", "⚠ Error!");
+    }
+  }
+
+  private void showError(String errorMessage, String errorTitle) {
+    JOptionPane.showMessageDialog(
+      null, 
+      errorMessage,
+      errorTitle,
+      JOptionPane.ERROR_MESSAGE
+    );
+  }
+
+  private boolean validateIdade(String idadeString) {
     try {
       int idade = Integer.parseInt(idadeString);
 
@@ -172,24 +173,19 @@ public class UserController {
     }
   }
 
-  public User selectUser() {
+  private User selectUser() {
     User[] users = this.usersRepository.all();
 
     if (users.length == 0) {
-      JOptionPane.showMessageDialog(
-        null,
-        "X_X Não tem usuário cadastrado!",
-        "⚠ Aviso.",
-        JOptionPane.WARNING_MESSAGE
-      );
+      showError("X_X Não tem usuário cadastrado!", "⚠ Aviso.");
 
       return null;
     }
 
     User user = (User) JOptionPane.showInputDialog(
       null, 
-      "Usuários Cadastrados",
-      "Usuários Cadastrados", 
+      "👥 Usuários Cadastrados",
+      "👥 Usuários Cadastrados", 
       JOptionPane.ERROR_MESSAGE, 
       null,
       users,

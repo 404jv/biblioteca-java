@@ -20,7 +20,8 @@
 
 - [X] Dixar campos do User obrigatórios
 - [X] Dixar campos do Book obrigatórios
-- [ ] Passar o atributo `AnoDePublicacao` para `int`
+- [X] Passar o atributo `AnoDePublicacao` para `int`
+- [ ] Melhor nome para a função `isPositiveNumber`
 
 ### Perguntas
 - [x] Se o usuário colocar null em um capo eu deixo? (Não é obrigatório tratar o erro)

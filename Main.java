@@ -6,18 +6,11 @@ import br.edu.ifpr.repositories.BooksRepository;
 import br.edu.ifpr.repositories.UsersRepository;
 
 public class Main {
-  public static BookController bookController = new BookController(
-    BooksRepository.getInstance()
-  );
-
-  public static UserController userController = new UserController(
-    UsersRepository.getInstance()
-  );
-
   public static void main(String[] args) {
+    int selectedOption;
 
     while(true) {
-      int selectedOption = selectOption();
+      selectedOption = selectOption();
 
       if (selectedOption == -1) break;
 
@@ -52,6 +45,14 @@ public class Main {
   }
 
   public static void routes(int option) {
+    BookController bookController = new BookController(
+      BooksRepository.getInstance()
+    );
+  
+    UserController userController = new UserController(
+      UsersRepository.getInstance()
+    );
+
     if (option == 0) {
       bookController.create();
       return;

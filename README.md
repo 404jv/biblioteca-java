@@ -24,6 +24,6 @@
 - [ ] Melhor nome para a função `isPositiveNumber`
 
 ### Perguntas
-- [x] Se o usuário colocar null em um capo eu deixo? (Não é obrigatório tratar o erro)
+- [x] Se o usuário colocar null em um campo eu deixo? (Não é obrigatório tratar o erro)
 - [x] Como eu coloco o id e o nome na opção do showInputDialog? (Só retornar o user inteiro)
-- [ ] Como eu tiro o "input" do update?
+- [ ] Como eu tiro o “input” do update?

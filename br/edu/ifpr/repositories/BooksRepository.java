@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import br.edu.ifpr.model.Book;
 
 public class BooksRepository {
-  private ArrayList<Book> books;
+  private ArrayList<Book> repository;
   private static BooksRepository INSTANCE;
 
   private BooksRepository() {
-    this.books = new ArrayList<>();
+    this.repository = new ArrayList<>();
   }
 
   public static BooksRepository getInstance() {
@@ -22,7 +22,7 @@ public class BooksRepository {
 
   public void create(
     String titulo, 
-    int paginas, 
+    int paginas,
     String autor,  
     String genero,
     String editora, 
@@ -37,11 +37,11 @@ public class BooksRepository {
       anoDePublicacao
     );
 
-    this.books.add(book);
+    this.repository.add(book);
   }
 
   public Book[] all() {
-    Book[] books = this.books.toArray(new Book[this.books.size()]);
+    Book[] books = this.repository.toArray(new Book[this.repository.size()]);
 
     return books;
   }
@@ -64,6 +64,6 @@ public class BooksRepository {
   }
 
   public void delete(Book book) {
-    this.books.remove(book);
+    this.repository.remove(book);
   }
 }

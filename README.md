@@ -26,4 +26,4 @@
 ### Perguntas
 - [x] Se o usuário colocar null em um campo eu deixo? (Não é obrigatório tratar o erro)
 - [x] Como eu coloco o id e o nome na opção do showInputDialog? (Só retornar o user inteiro)
-- [ ] Como eu tiro o “input” do update?
+- [X] Como eu tiro o “input” do update sem precisar remover o default value? (Preencha o construtor inteiro)

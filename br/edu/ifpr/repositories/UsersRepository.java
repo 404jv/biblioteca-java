@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import br.edu.ifpr.model.User;
 
 public class UsersRepository {
-  private ArrayList<User> users;
+  private ArrayList<User> repository;
   private static UsersRepository INSTANCE;
 
   private UsersRepository() {
-    this.users = new ArrayList<User>();
+    this.repository = new ArrayList<User>();
   }
 
   public static UsersRepository getInstance() {
@@ -35,7 +35,7 @@ public class UsersRepository {
     user.setIdade(idade);
     user.setCurso(curso);
 
-    users.add(user);
+    repository.add(user);
   }
 
   public void update(
@@ -55,13 +55,13 @@ public class UsersRepository {
   }
 
   public User[] all() {
-    User[] users = this.users.toArray(new User[this.users.size()]);
+    User[] users = this.repository.toArray(new User[this.repository.size()]);
 
     return users;
   }
 
   public User findByName(String nome) {
-    for (User user: this.users) {
+    for (User user: this.repository) {
       if (user.getNome() == nome) {
         return user;
       }
@@ -71,6 +71,6 @@ public class UsersRepository {
   }
 
   public void delete(User user) {
-    this.users.remove(user);
+    this.repository.remove(user);
   }
 }

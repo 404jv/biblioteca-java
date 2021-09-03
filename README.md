@@ -3,23 +3,23 @@
 - [X] Alterar usuários
 - [X] Remover usuários
 - [X] Exibir usuários
-
+---
 - [X] Cadastrar livros
 - [X] Exibir livros
 - [X] Alterar livros
 - [X] Remover livros
-
+---
 - [x] Menu
 - [x] Regras de negócio
 - [x] Tirar o "input" do input do user
 - [x] Verficar página int
 - [x] Melhor PT
-
+---
 - [X] Null? Alterar usuários, Cadastrar usuários
 - [X] Error ao remove com 0 users
 
-- [X] Dixar campos do User obrigatórios
-- [X] Dixar campos do Book obrigatórios
+- [X] Deixar campos do User obrigatórios
+- [X] Deixar campos do Book obrigatórios
 - [X] Passar o atributo `AnoDePublicacao` para `int`
 - [ ] Melhor nome para a função `isPositiveNumber`
 
